@@ -12,26 +12,19 @@ const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector("nav ul");
 
 if (navToggle && navMenu) {
-
     navToggle.addEventListener("click", () => {
-
-        navMenu.style.cssText = `
-            display:flex;
-            flex-direction:column;
-            position:fixed;
-            top:70px;
-            inset-inline:20px;
-            background:#0F2444;
-            padding:20px;
-            border-radius:16px;
-            gap:16px;
-            z-index:999;
-        `;
-
+        navMenu.classList.toggle("active");
+        navToggle.classList.toggle("active");
     });
 
+    // يقفل المنيو عند الضغط على أي لينك
+    navMenu.querySelectorAll("a").forEach(link => {
+        link.addEventListener("click", () => {
+            navMenu.classList.remove("active");
+            navToggle.classList.remove("active");
+        });
+    });
 }
-
 // ================= HERO DUST =================
 const dustBox = document.getElementById("dustFloaters");
 
